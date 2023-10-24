@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #413a3a;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    body {
+      /* width: 1200px;
+      margin: 0 auto; */
+      width: 100%;
+      min-width: 1600px;
+      /* border: #ea9393 2px dotted; */
+      background: url(images/8.2.jpg) no-repeat fixed center;
+      background-size: 1800px 1000px;
+      font-family: serif;
+    }
+
+    .log {
+      position: relative;
+      float: left;
+      width: 45%;
+      height: 900px;
+    }
+
+    .log .tab {
+      position: absolute;
+      top: 150px;
+      left: 200px;
+      height: 600px;
+      width: 500px;
+      background-color: rgb(252, 249, 250);
+      border: #ea9393 2px dotted;
+    }
+
+    .log .tab h2 {
+      position: absolute;
+      top: 40px;
+      left: 30px;
+      font: italic 600 35px serif;
+      color: #413a3a;
+    }
+
+    .log .tab .nav {
+      position: absolute;
+      top: 110px;
+      width: 500px;
+      height: 50px;
+      line-height: 50px;
+    }
+
+    .log .tab .nav a {
+      float: left;
+      width: 245px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .log .tab a:hover {
+      color: #ea9393;
+      /* border-bottom: 2px solid #a85959; */
+    }
+
+    .log .tab .nav strong {
+      float: left;
+    }
+
+    .log .tab form {
+      position: absolute;
+      top: 200px;
+      left: 50%;
+      margin-left: -152px;
+      width: 304px;
+      height: 340px
+    }
+
+    .log input {
+      margin: 20px 0;
+      height: 40px;
+      width: 300px;
+      font: italic 20px serif;
+    }
+
+    .log span {
+      display: block;
+      height: 30px;
+      /* margin-left: 20px; */
+      font-size: 15px;
+      color: red;
+      font-weight: 600;
+      opacity: 0;
+    }
+
+    .log .tab form a {
+      line-height: 30px;
+    }
+
+    .log .tab form .getcode {
+      position: absolute;
+      right: 4px;
+      bottom: 170px;
+    }
+
+    button {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      margin-left: -90px;
+      height: 50px;
+      width: 180px;
+      border: none;
+      color: #f4f0f0;
+      background-color: #50a6dc;
+      font-size: 20px;
+    }
+
+    .second {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="log">
+    <div class="tab">
+      <h2>请登录</h2>
+      <div class="nav">
+        <a href="javascript:; " data-id="1" style="border-bottom: 2px solid #a85959;">用户名密码登录</a>
+        <strong>|</strong>
+        <a href="javascript:;" data-id="2">手机号验证登录</a>
+      </div>
+      <form action="#" class="first">
+        <input type="text" class="username" placeholder="请输入用户名">
+        <span>请输入由字母数字及下划线组成的用户名！</span>
+        <input type="password" class="pwd" placeholder="请输入密码">
+        <span>请输入由6~10位数字及字母组成的密码！</span>
+        <a href="P1 register.html">忘记密码？</a>
+        <button>登录</button>
+      </form>
+
+      <form action="#" class="second">
+        <input type="text" class="phone" placeholder="请输入电话号码">
+        <span>您输入的手机号格式不正确！</span>
+        <input type="text" class="code" placeholder="请输入验证码"><a href="javascript:;" class="getcode">点击获取</a>
+        <span class="no">请输入6位数字！</span>
+        <a href="P1 register.html">忘记密码？</a>
+        <button>登录</button>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="photoes">
+    <div class="box">
+      <span class="row1">
+        < </span>
+          <span class="row2">></span>
+          <ul class="line">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <img src="招新images/3.jpg" alt="">
+    </div>
+  </div> -->
+  <script>
+    //一、登录页面
+    //1.tab切换
+    const nav = document.querySelector(`.tab .nav`)
+    const a1 = document.querySelector(`[data-id="1"]`)
+    const a2 = document.querySelector(`[data-id="2"]`)
+    const first = document.querySelector(`.first`)
+    const second = document.querySelector(`.second`)
+    a1.addEventListener(`click`, function () {
+      a1.style.borderBottom = `2px solid #a85959`
+      a2.style.borderBottom = 0
+      first.style.display = `block`
+      second.style.display = `none`
+    })
+    a2.addEventListener(`click`, function () {
+      a2.style.borderBottom = `2px solid #a85959`
+      a1.style.borderBottom = 0
+      first.style.display = `none`
+      second.style.display = `block`
+    })
+    //2.正则匹配
+    const username = document.querySelector(`.username`)
+    const phone = document.querySelector(`.phone`)
+    const code = document.querySelector(`.code`)
+    const pwd = document.querySelector(`.pwd`)
+    const no = document.querySelector(`.no`)
+
+    username.addEventListener(`change`, verifyname)
+    // username.addEventListener(`keyup`, function (e) {
+    //   if (e.key === `Enter`) verifyname()
+    // })
+    function verifyname() {
+      const reg = /^[0-9A-Za-z_-]{1,}$/
+      if (reg.test(username.value)) {
+        username.nextElementSibling.style.opacity = 0
+        return true
+      }
+      else {
+        username.nextElementSibling.style.opacity = 1
+        return false
+      }
+    }
+
+    phone.addEventListener(`change`, verifyphone)
+    // phone.addEventListener(`keyup`, function (e) {
+    //   if (e.key === `Enter`) verifyphone()
+    // })
+    function verifyphone() {
+      const reg = /^1(3\d|4[5-9]|5[-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/
+      if (reg.test(phone.value)) {
+        phone.nextElementSibling.style.opacity = 0
+        return true
+      }
+      else {
+        phone.nextElementSibling.style.opacity = 1
+        return false
+      }
+    }
+
+    code.addEventListener(`change`, verifycode)
+    // code.addEventListener(`keyup`, function (e) {
+    //   if (e.key === `Enter`) verifycode()
+    // })
+    function verifycode() {
+      const reg = /^[\d]{6}$/
+      if (reg.test(code.value)) {
+        no.style.opacity = 0
+        return true
+      }
+      else {
+        no.style.opacity = 1
+        return false
+      }
+    }
+
+    pwd.addEventListener(`change`, verifypwd)
+    // pwd.addEventListener(`keyup`, function (e) {
+    //   if (e.key === `Enter`) verifypwd()
+    // })
+    function verifypwd() {
+      const reg = /^[0-9A-Za-z_-]{6,10}$/
+      if (reg.test(pwd.value)) {
+        pwd.nextElementSibling.style.opacity = 0
+        return true
+      }
+      else {
+        pwd.nextElementSibling.style.opacity = 1
+        return false
+      }
+    }
+
+    //3.验证码模块
+    const getcode = document.querySelector(`.getcode`)
+    let flag = 1
+    getcode.addEventListener(`click`, function (e) {
+      e.preventDefault()
+      if (flag) {
+        flag = 0
+        getcode.style.fontSize = `14px`
+        let i = 60
+        getcode.innerHTML = `60s后重新获取`
+        let timeid = setInterval(function () {
+          i--
+          getcode.innerHTML = `${i}s后重新获取`
+          if (i === 0) {
+            clearInterval(timeid)
+            getcode.innerHTML = `重新获取`
+            flag = 1
+          }
+        }, 1000)
+      }
+    })
+
+
+    //4.提交模块
+    const persons = JSON.parse(localStorage.getItem(`user of zu-zi'space`)) || []
+    first.addEventListener(`submit`, function (e) {
+      e.preventDefault()
+      if (!verifyname()) {
+        return alert(`请填写完整后再提交`)
+      }
+      if (!verifypwd()) {
+        return alert(`请填写完整后再提交`)
+      }
+      for (let i = 0; i < persons.length; i++) {
+        if (persons[i].username === username.value && persons[i].pwd === pwd.value) {
+          localStorage.setItem(`current user of zu-zi'space`, JSON.stringify(persons[i]))
+          location.href = "P2-3.html"
+          return
+        }
+      }
+      alert(`您输入的密码似乎不对捏`)
+    })
+
+    second.addEventListener(`submit`, function (e) {
+      e.preventDefault()
+      if (!verifyphone()) {
+        return alert(`请填写完整后再提交`)
+      }
+      if (!verifycode()) {
+        return alert(`请填写完整后再提交`)
+      }
+      for (let i = 0; i < persons.length; i++) {
+        if (persons[i].phone === phone.value) {
+          localStorage.setItem(`current user of zu-zi'space`, JSON.stringify(persons[i]))
+          location.href = "P2-3.html"
+          return
+        }
+      }
+      alert(`您输入的手机号似乎没有注册过哩`)
+    })
+
+
+  </script>
+</body>
+
+</html>

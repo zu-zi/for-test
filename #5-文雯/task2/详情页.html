@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>当天安门遇上绝美晚霞</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-decoration: none;
+    }
+
+    /* 
+    video {
+      display: block;
+      width: 1000px;
+      height: 600px;
+      margin-top: 200px;
+    } */
+
+    /*头部导航*/
+    .header {
+      /* height: 160px; */
+      width: 100%;
+      min-width: 1600px;
+      /* border-radius: 5px 5px 0 0; */
+      /* background-image: url(images/1.jpg); */
+      /* font-family: serif; */
+      /* font-weight: 700; */
+      /* overflow: hidden; */
+    }
+
+    .header .nav {
+      width: 100%;
+      min-width: 1600px;
+      position: fixed;
+      top: 0;
+      height: 50px;
+      padding-top: 10px;
+      padding-left: 10px;
+      /* border-bottom: 2px solid #bbbaba; */
+      box-shadow: 3px 1px 3px #afadad;
+      background: #fff;
+      z-index: 100;
+    }
+
+    ul {
+      float: left;
+      /* padding-top: 3px; */
+    }
+
+    .header .nav li {
+      float: left;
+    }
+
+    .header .nav li>a {
+      display: block;
+      padding: 10px 15px;
+      color: #000;
+      font-size: 14px;
+    }
+
+    .header .nav li a:hover {
+      color: #4ecded;
+    }
+
+    .search {
+      float: left;
+      position: relative;
+      height: 50px;
+      margin-left: 60px;
+    }
+
+    .search .text {
+      float: left;
+      /* position: absolute; */
+      height: 40px;
+      width: 440px;
+      padding-left: 20px;
+      border: 0;
+      border-radius: 5px;
+      background-color: #ebe9e9;
+    }
+
+    .search .button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height: 30px;
+      width: 50px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      background-color: rgb(54, 174, 207);
+    }
+
+    .search .droplist {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 460px;
+      height: 340px;
+      border-radius: 0 0 10px 10px;
+      background-color: #fff;
+      z-index: 2;
+      display: none;
+      /* opacity: 0;
+      transition: all .5s; */
+    }
+
+    .search .droplist .history {
+      height: 70px;
+      margin: 15px 0 0 15px;
+    }
+
+    .search .droplist .history span {
+      position: absolute;
+      top: 50px;
+      left: 15px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 5px;
+      background-color: #f3f2f2;
+      font-size: small;
+    }
+
+    .search .droplist>span {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+      color: #bbbaba;
+      font-size: small;
+      cursor: pointer;
+    }
+
+    .search .droplist .hot {
+      margin-left: 15px;
+    }
+
+    .search .droplist .hot .hotlist a {
+      float: left;
+      width: 222px;
+      height: 45px;
+      line-height: 45px;
+      font-size: small;
+      color: #000;
+    }
+
+    .search .droplist .hot .hotlist a:hover {
+      background-color: #eae9e9;
+    }
+
+    .nav .user {
+      float: left;
+      /* position: absolute; */
+      margin: -2px 20px 0 60px;
+      height: 40px;
+      width: 40px;
+      border: 2px solid #fff;
+      border-radius: 22px;
+      background: url(images/wdtx.avif);
+      background-size: contain;
+    }
+
+    .nav .button2 {
+      float: right;
+      margin-right: 15px;
+      height: 40px;
+      width: 90px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #ef94dc;
+    }
+
+    .nav .button2:hover {
+      background-color: #fbb2ec;
+    }
+
+    .nav ul li .tab {
+      position: absolute;
+      top: 60px;
+      right: -120px;
+      height: 540px;
+      width: 360px;
+      border-radius: 10px;
+      background-color: #fff;
+      z-index: 100;
+      box-shadow: 1px 1px 3px #c3bdbd;
+      display: none;
+      transition: all .5s;
+    }
+
+
+    .header .nav ul li .tab .line {
+      height: 50px;
+      border-bottom: #bbbaba 1px solid;
+    }
+
+    .header .nav ul li .tab .line li {
+      width: 120px;
+      line-height: 50px;
+      text-align: center;
+      font-size: small;
+    }
+
+    .header .nav ul li .tab .line li:hover {
+      border-bottom: #4ecded 2px solid;
+      color: #4ecded;
+    }
+
+    .header .nav ul li .tab .line .active {
+      border-bottom: #4ecded 2px solid;
+      color: #4ecded;
+    }
+
+    .history1,
+    .history2,
+    .history3 {
+      display: none;
+    }
+
+    .nav .tab .light {
+      display: block;
+    }
+
+    .header .nav ul li .tab .history1 span {
+      display: block;
+      padding-left: 10px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .header .nav ul li .tab .historylist div {
+      position: relative;
+      height: 80px;
+      width: 350px;
+      margin: 10px 0 0 10px;
+
+    }
+
+    .historylist .playvideo {
+      float: left;
+      width: 140px;
+    }
+
+    .history1 .historylist .playvideo i {
+      position: absolute;
+      bottom: 3px;
+      left: 60px;
+      padding: 0 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+      font-style: normal;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .history2 .historylist .playvideo i {
+      position: absolute;
+      top: 5px;
+      left: 93px;
+      padding: 0 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+      font-style: normal;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .nav .tab .show {
+      margin: 20px auto;
+      height: 35px;
+      width: 300px;
+      border-radius: 8px;
+      line-height: 35px;
+      text-align: center;
+      font-size: small;
+      color: #7b7676;
+      background-color: #eeecec;
+      cursor: pointer;
+    }
+
+    .historylist div img {
+      height: 80px;
+      width: 140px;
+      border-radius: 10px;
+    }
+
+    .historylist div a {
+      float: right;
+      margin-right: 18px;
+      height: 80px;
+      width: 180px;
+    }
+
+    .historylist div a p {
+      height: 37px;
+      font-size: small;
+      color: #000;
+    }
+
+    .historylist div a p:hover {
+      color: #4ecded;
+    }
+
+    .historylist div a strong {
+      font-weight: normal;
+      color: #a49b9b;
+      font-size: 11px;
+    }
+
+    .historylist div a em {
+      display: block;
+      padding: 1px 0;
+      font-style: normal;
+      font-size: 11px;
+      color: #a49b9b;
+    }
+
+    /*视频部分*/
+    .w {
+      width: 1500px;
+      margin: auto;
+    }
+
+    .video {
+      float: left;
+      width: 1040px;
+    }
+
+    .video h2 {
+      margin-top: 80px;
+      font-weight: 500;
+      font-size: 22px;
+    }
+
+
+    .video .detail ul li {
+      float: left;
+      margin: 10px 20px 0 0;
+      font-size: 12px;
+      color: #a49b9b;
+    }
+
+    .video .whole {
+      position: relative;
+      margin-top: 50px;
+      height: 600px;
+      width: 1040px;
+    }
+
+    .black {
+      /*为什么不能给这里加relative?*/
+      margin-top: 50px;
+      height: 600px;
+      width: 1040px;
+      background-color: #000;
+      z-index: -20;
+    }
+
+    video {
+      margin-top: 45px;
+      height: 510px;
+      width: 1040px;
+    }
+
+    .video .whole .speedlist {
+      color: #fff;
+    }
+
+    .video .whole .speedlist ul {
+      position: absolute;
+      bottom: 108px;
+      right: 210px;
+      display: none;
+    }
+
+    .video .whole .speedlist ul li {
+      height: 30px;
+      width: 60px;
+      text-align: center;
+      line-height: 30px;
+      background: rgba(0, 0, 0, .7);
+      cursor: pointer;
+    }
+
+    .video .whole .speedlist ul li:hover {
+      background: rgba(129, 128, 128, 0.4);
+    }
+
+    .video .whole .speed {
+      position: absolute;
+      bottom: 78px;
+      right: 210px;
+      height: 30px;
+      width: 60px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 16px;
+      opacity: 0;
+      transition: all .5s;
+    }
+
+    .video .whole .speed:hover {
+      color: #4ecded;
+    }
+
+
+
+    .line1 {
+      margin-top: 40px;
+      padding-left: 7px;
+      height: 50px;
+      width: 1032px;
+      box-shadow: 3px 1px 3px #c2bfbf;
+      color: #807b7b;
+      line-height: 50px;
+      font-size: 14px;
+    }
+
+    .line1 i {
+      margin-left: 20px;
+    }
+
+    .line1 i input {
+      margin-top: 10px;
+    }
+
+    .line1 .text {
+      height: 40px;
+      width: 640px;
+      margin-left: 20px;
+      padding-left: 20px;
+      border: 0;
+      border-radius: 5px;
+      background-color: rgba(216, 214, 214, 0.75);
+    }
+
+    .line1 em {
+      margin-left: -130px;
+      font-style: normal;
+    }
+
+    .line1 .button {
+      /* margin-left: -50px; */
+      height: 40px;
+      width: 50px;
+      border: 0;
+      border-radius: 0 5px 5px 0;
+      color: #fff;
+      background-color: rgb(54, 174, 207)
+    }
+
+    .line2 {
+      height: 80px;
+      border-bottom: 1px solid #cfcece;
+      line-height: 80px;
+      font-size: large;
+      color: #807b7b;
+    }
+
+    .line2 i {
+      float: left;
+      padding-right: 30px;
+    }
+
+    .line2 i:hover {
+      color: rgb(54, 174, 207);
+    }
+
+    .line2 span {
+      float: right;
+      margin-right: 30px;
+      font-size: medium;
+    }
+
+    .line2 span:hover {
+      color: rgb(54, 174, 207);
+    }
+
+    .line3 {
+      height: 100px;
+      border-bottom: 1px solid #cfcece;
+      color: #807b7b;
+    }
+
+    .line3 ul li {
+      float: left;
+      margin: 70px 10px 0 10px;
+      padding: 3px 7px;
+      border-radius: 12px;
+      background-color: #eaeaea;
+    }
+
+    .line3 ul li:hover {
+      color: rgb(54, 174, 207);
+    }
+
+    /*评论区的制作*/
+
+    .plq {
+      position: relative;
+      height: 200px;
+      /* height:300px; */
+      margin-top: 100px;
+
+    }
+
+    .plq .tab {
+      height: 40px;
+      margin-bottom: 30px;
+    }
+
+    .plq .tab strong {
+      font-size: 25px;
+      font-weight: normal;
+    }
+
+    .plq .tab em {
+      margin-right: 30px;
+      color: #adaaaa;
+    }
+
+    .plq .tab span {
+      padding: 10px;
+    }
+
+    .plq i,
+    .list i {
+      float: left;
+      margin-left: 20px;
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+      line-height: 50px;
+      text-align: center;
+      background-image: url(images/wdtx.avif);
+      /* background-repeat: no-repeat; */
+      background-size: 100%;
+    }
+
+
+    .plq .text {
+      float: left;
+      padding: 0 10px;
+      width: 850px;
+      height: 50px;
+      margin-left: 20px;
+      line-height: 50px;
+      border-radius: 10px;
+      border: 0;
+      background: #e3e2e2;
+      font-size: 14px;
+      transition: all 0.5s;
+    }
+
+    .plq .text:hover {
+      background: #fff;
+    }
+
+    .plq .text:focus {
+      height: 100px;
+    }
+
+    .plq .ok {
+      float: left;
+      margin-left: 10px;
+      height: 50px;
+      width: 60px;
+      border-radius: 5px;
+      line-height: 50px;
+      text-align: center;
+      background-color: rgb(123, 185, 216);
+      color: aliceblue;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+
+    .plq .ok:hover {
+      background-color: rgb(37, 151, 208);
+    }
+
+    .plq .num {
+      position: absolute;
+      bottom: 10px;
+      left: 910px;
+      color: rgb(153, 167, 179);
+      font-size: 12px;
+      transition: all 0.5s;
+      /* opacity: 0; */
+    }
+
+    .video>.list {
+      /* display: none; */
+      transition: all 0.5s;
+      /* background-color: pink; */
+
+    }
+
+    .list .head {
+      height: 50px;
+    }
+
+    .list .uname {
+      float: left;
+      height: 50px;
+      width: 140px;
+      margin-left: 20px;
+      line-height: 50px;
+      color: #b47676;
+    }
+
+    .list .body {
+      position: relative;
+      height: 50px;
+      width: 1000px;
+      margin-bottom: 50px;
+      border-bottom: 1px solid #b47676;
+
+    }
+
+    .list .remark {
+      margin-top: 20px;
+      margin-left: 30px;
+      /* font-family: serif;
+      font-weight: 500; */
+      font: 500 14px serif;
+    }
+
+    .list .time {
+      position: absolute;
+      bottom: -16px;
+      right: 0;
+      font-size: small;
+      color: #b47676;
+    }
+
+    .video>.list .body a {
+      position: absolute;
+      bottom: 25px;
+      right: 35px;
+      font-size: medium;
+      color: #f28181;
+      text-decoration: none;
+    }
+
+    .recommend {
+      float: right;
+      width: 420px;
+      margin-top: 70px;
+      margin-left: 40px;
+    }
+
+    .recommend .author {
+      height: 100px;
+    }
+
+    .recommend .author i {
+      float: left;
+      margin-top: 15px;
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+      background: url(images/tx1.avif);
+      background-size: contain;
+    }
+
+    .recommend .author .show {
+      float: right;
+      margin-right: 100px;
+
+    }
+
+    .recommend .author .show span:hover {
+      color: rgb(37, 151, 208);
+      cursor: pointer;
+    }
+
+    .recommend .author .show em {
+      margin-left: 10px;
+      line-height: 30px;
+      color: #adaaaa;
+      font-style: normal;
+      cursor: pointer;
+    }
+
+    .recommend .author em:hover {
+      color: rgb(37, 151, 208);
+    }
+
+    .recommend .author .show p {
+      color: #adaaaa;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .recommend .author .show .button {
+      height: 30px;
+      width: 200px;
+      border-radius: 7px;
+      line-height: 30px;
+      text-align: center;
+      background-color: rgb(37, 151, 208);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .recommend .commentlist {
+      height: 40px;
+      width: 410px;
+      border-radius: 10px;
+      background-color: #e9e7e7;
+      line-height: 40px;
+      padding-left: 20px;
+    }
+
+    .recommend .line4 {
+      height: 50px;
+      line-height: 50px;
+    }
+
+    .recommend .line4 span {
+      float: left;
+    }
+
+    .recommend .line4 i {
+      float: right;
+      font-style: normal;
+    }
+
+    /*右侧推荐栏列表*/
+    .recommendlist {
+      position: relative;
+      margin-top: 10px;
+      /* height: 300px; */
+    }
+
+    .recommendlist div {
+      position: relative;
+      height: 137px;
+      width: 450px;
+    }
+
+    .recommendlist .playvideo {
+      float: left;
+    }
+
+    .recommendlist .playvideo i {
+      position: absolute;
+      bottom: 20px;
+      left: 163px;
+      padding: 0 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 14px;
+      font-style: normal;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .recommendlist div img {
+      height: 120px;
+      width: 210px;
+      border-radius: 10px;
+    }
+
+    .recommendlist div a {
+      float: left;
+      margin-left: 10px;
+      height: 80px;
+      width: 210px;
+      margin-top: 5px;
+    }
+
+    .recommendlist div a p {
+      height: 40px;
+      color: #000;
+    }
+
+    .recommendlist div a p:hover {
+      color: #4ecded;
+    }
+
+    .recommendlist div a em {
+      display: block;
+      padding: 5px 0;
+      font-style: normal;
+      font-size: 14px;
+      color: #a49b9b;
+    }
+
+    .recommendlist div a i,
+    .recommendlist div a span {
+      float: left;
+      padding-right: 15px;
+      font-style: normal;
+      font-size: 13px;
+      color: #a49b9b;
+    }
+
+    /*小窗模式*/
+    .video .blacksmall {
+      position: fixed;
+      bottom: 25px;
+      right: 20px;
+      height: 160px;
+      width: 350px;
+      z-index: 70;
+    }
+
+    .video .videosmall {
+      position: fixed;
+      bottom: 10px;
+      height: 160px;
+      width: 350px;
+      z-index: 70;
+    }
+
+    /*弹幕*/
+    @keyframes danmuAnimation {
+      0% {
+        right: 0;
+        transform: translate(100%, 0);
+      }
+
+      100% {
+        right: 100%;
+        transform: translate(0, 0);
+      }
+    }
+
+    .danmuarea {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 300px;
+      width: 1040px;
+      z-index: 50;
+      overflow: hidden;
+      /* background: #000; */
+
+    }
+
+    .danmuarea div {
+      position: absolute;
+      right: 100%;
+      color: #e9e7e7;
+      font-size: large;
+      white-space: nowrap;
+      animation: danmuAnimation ease-in 12s;
+      /* color: rgba(246, 243, 85, 0.8); */
+    }
+
+    .danmuarea .pause {
+      animation-play-state: paused;
+    }
+
+    .setremark {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 3px 5px;
+      border-radius: 6px;
+      color: #fff;
+      background-color: #50a6dc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="nav">
+      <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">番剧</a></li>
+        <li><a href="#">直播</a></li>
+        <li><a href="#">游戏中心</a></li>
+        <li><a href="#">会员购</a></li>
+        <li><a href="#">漫画</a></li>
+        <li><a href="#">赛事</a></li>
+        <li><a href="#">下载客户端</a></li>
+      </ul>
+      <div class="search">
+        <input type="text" name="" class="text" placeholder="vue">
+        <input type="button" class="button" value="搜索">
+        <div class="droplist">
+          <div class="history">搜索历史<span>羊羊羊PD</span></div>
+          <span>清空</span>
+          <div class="hot">bilibili热搜
+            <div class="hotlist">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <i class="user"></i>
+      <ul>
+        <li id="li"><a href="#">大会员</a></li>
+        <li id="li"><a href="#">消息</a></li>
+        <li id="li"><a href="#">动态</a></li>
+        <li id="li"><a href="#">收藏</a></li>
+        <li style="position: relative;"><a href=" #" class="historydroplist">历史</a>
+          <div class="tab">
+            <div class="line">
+              <ul>
+                <li class="active">视频</li>
+                <li>直播</li>
+                <li>专栏</li>
+              </ul>
+            </div>
+            <div class="history1 light" id="history">
+              <span>今天</span>
+              <div class="historylist">
+
+              </div>
+            </div>
+            <div class="history2" id="history">
+              <div class="historylist">
+
+              </div>
+              <div class="show">查看更多</div>
+            </div>
+            <div class="history3" id="history">
+              <div class="historylist">
+
+              </div>
+              <div class="show">查看更多</div>
+            </div>
+          </div>
+        </li>
+        <li id="li"><a href="#">创作中心</a></li>
+      </ul>
+      <input type="button" value="投稿" class="button2">
+    </div>
+  </div>
+  <div class="w">
+    <div class="video">
+      <h2>当天安门遇上绝美晚霞</h2>
+      <div class="detail">
+        <ul>
+          <li>播放:63.2万</li>
+          <li>评论:538</li>
+          <li>2022-10-04 00:45:28</li>
+          <li>未经作者授权，禁止转载</li>
+        </ul>
+      </div>
+      <div class="whole">
+        <div class="black">
+          <video src="4.mp4" controls autoplay muted>
+          </video>
+        </div>
+        <div class="speedlist">
+          <ul>
+            <li data-id="2">2.0x</li>
+            <li data-id="1.5">1.5x</li>
+            <li data-id="1.25">1.25x</li>
+            <li data-id="1">1.0x</li>
+            <li data-id="0.5">0.5x</li>
+          </ul>
+          <div class="speed">倍速</div>
+        </div>
+        <div class="danmuarea"></div>
+      </div>
+      <div class="line1">
+        <span>1人正在看，已装填200条弹幕</span>
+        <i>弹幕:</i>
+        <i style="margin-left: 6px;">
+          <form action="#" style="display: inline-block;"><label for="on">开：</label><input type="radio" name="comment"
+              value="1" id="on" checked>
+            <label for="off">关：</label>
+            <input type="radio" name="comment" id="off" value="0">
+          </form>
+        </i>
+        <input class="text" type="text" placeholder="发个友善的弹幕见证当下">
+        <em>弹幕礼仪 ></em>
+        <input class="button" type="button" value="发送">
+      </div>
+      <div class="line2">
+        <i>9.1万点赞</i>
+        <i>1.6万投币</i>
+        <i>3.6万收藏</i>
+        <i>8860转发</i>
+        <span>...</span>
+        <span>4篇笔记</span>
+        <span>稿件投诉</span>
+      </div>
+      <div class="line3">
+        <ul>
+          <li>Shadow Of The Sun</li>
+          <li>bilibili打卡中国</li>
+          <li>摄影</li>
+          <li>生活</li>
+          <li>出行</li>
+          <li>温柔</li>
+          <li>夕阳</li>
+          <li>天安门</li>
+          <li>晚霞</li>
+          <li>记录</li>
+        </ul>
+      </div>
+      <div class="plq">
+        <div class="tab">
+          <strong>评论</strong>
+          <em>1244</em>
+          <span>最新</span>|
+          <span style="color:#adaaaa;">最热</span>
+        </div>
+        <i></i>
+        <textarea name="" class="text" maxlength="200" id="" cols="30" rows="10" placeholder="请输入你想回复的内容："></textarea>
+        <div class="ok">发布</div>
+        <span class="num">0/200字</span>
+      </div>
+      <ul class="list">
+      </ul>
+    </div>
+    <div class="recommend">
+      <div class="author">
+        <i></i>
+        <div class="show">
+          <span>CLOUDY姐</span>
+          <em>发消息</em>
+          <p>想把你养在蓄满星星的池塘陪我看月亮坠落</p>
+          <div class="button">+关注 742</div>
+        </div>
+
+
+      </div>
+      <div class="commentlist">
+        弹幕列表
+        :
+      </div>
+      <div class="line4">
+        <span>接下来播放</span>
+        <i>自动联播<input type="radio"></i>
+      </div>
+      <div class="recommendlist">
+
+      </div>
+    </div>
+  </div>
+  <div class="setremark">点此重置评论区</div>
+  <script src="comment.js"></script>
+  <script src="list.js"></script>
+  <script>
+    //重置模块
+    alert(`为了存入一些初始评论，我将它们写成了外链js，第一次浏览此网页请一定要点击左下角重置，否则看不到许多效果。如果是二次浏览，请一定不要点击`)
+    document.querySelector(`.setremark`).addEventListener(`click`, function () {
+      if (confirm(`您确定要重置吗？`)) {
+        localStorage.setItem(`comment of zu-zi's bilibili`, JSON.stringify(arraycomment))
+      }
+    })
+
+    //头部导航
+    // const headernav = document.querySelector(`.header .nav`)
+    // const headeras = document.querySelectorAll(`.header .nav li a`)
+    const headertext = document.querySelector(`.search .text`)
+    //搜索的下拉栏
+    const hotlist = document.querySelector(`.droplist .hot .hotlist`)
+    const headerdroplist = document.querySelector(`.header .search .droplist`)
+    headertext.addEventListener(`focus`, function () {
+      headerdroplist.style.display = `block`
+    })
+    headertext.addEventListener(`blur`, function () {
+      headerdroplist.style.display = `none`
+    })
+    for (let i = 0; i < arrhot.length; i++) {
+      const a = document.createElement(`a`)
+      a.href = `#`
+      a.innerHTML = `
+        ${arrhot[i]}
+        `
+      hotlist.appendChild(a)
+    }
+
+    //历史记录的显示更多
+    const historylist = document.querySelector(`.header .nav ul li .tab .history1 .historylist`)
+    for (let i = 0; i < arrhistory.length; i++) {
+      const div = document.createElement(`div`)
+      div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/history${i + 1}.avif" alt="">
+    <i>${arrhistory[i].time}</i>
+</p>
+  <a href="#">
+            <p>${arrhistory[i].p}</p>
+            <strong>${arrhistory[i].strong}</strong>
+            <em>${arrhistory[i].em}</em>
+          </a>
+      `
+      historylist.appendChild(div)
+    }
+
+    const historylist2 = document.querySelector(`.header .nav ul li .tab .history2 .historylist`)
+    for (let i = 0; i < arrhistoryzb.length; i++) {
+      const div = document.createElement(`div`)
+      div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/history${i + 6}.avif" alt="">
+    <i>${arrhistoryzb[i].time}</i>
+</p>
+  <a href="#">
+            <p>${arrhistoryzb[i].p}</p>
+            <strong>${arrhistoryzb[i].strong}</strong>
+            <em>${arrhistoryzb[i].em}</em>
+          </a>
+      `
+      historylist2.appendChild(div)
+    }
+
+    const historylist3 = document.querySelector(`.header .nav ul li .tab .history3 .historylist`)
+    for (let i = 0; i < arrhistoryzl.length; i++) {
+      const div = document.createElement(`div`)
+      div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/history${i + 9}.avif" alt="">
+</p>
+  <a href="#">
+            <p>${arrhistoryzl[i].p}</p>
+            <strong>${arrhistoryzl[i].strong}</strong>
+            <em>${arrhistoryzl[i].em}</em>
+          </a>
+      `
+      historylist3.appendChild(div)
+    }
+
+    const historydroplist = document.querySelector(`.historydroplist`)
+    // const historydroplistwhole = document.querySelector(`#historydroplist`)
+    const historytab = document.querySelector(`.nav .tab`)
+    const linelis = document.querySelectorAll(`.nav .tab .line li`)
+    const historydivs = document.querySelectorAll(`.nav .tab #history`)
+    const navlis = document.querySelectorAll(`.nav #li`)
+    historydroplist.addEventListener(`mouseenter`, function () {
+      historytab.style.display = `block`
+    })
+
+    historytab.addEventListener(`mouseleave`, function () {
+      historytab.style.display = `none`
+    })
+    for (let i = 0; i < navlis.length; i++) {
+      navlis[i].addEventListener(`mouseenter`, function () {
+        historytab.style.display = `none`
+      })
+    }
+    for (let i = 0; i < linelis.length; i++) {
+      linelis[i].addEventListener(`click`, function () {
+        document.querySelector(`.nav .tab .light`).classList.remove(`light`)
+        historydivs[i].classList.add(`light`)
+        document.querySelector(`.nav .tab .line .active`).classList.remove(`active`)
+        linelis[i].classList.add(`active`)
+      })
+    }
+    //评论区
+    //1.修改样式
+    const text = document.querySelector(`.plq .text`)
+    const num = document.querySelector(`.num`)
+    const btn = document.querySelector(`.ok`)
+    const list = document.querySelector(`.video>.list`)
+    const remark = document.querySelector(`.remark`)
+    text.addEventListener(`focus`, function () {
+      num.style.opacity = 1;
+      btn.style.height = `100px`
+      btn.style.lineHeight = `100px`
+      text.style.background = `#fff`
+    })
+    text.addEventListener(`blur`, function () {
+      num.style.opacity = 0;
+      btn.style.height = `50px`
+      btn.style.lineHeight = `50px`
+      text.style.background = `#e3e2e2`
+    })
+    text.addEventListener(`input`, function () {
+      num.innerHTML = `${text.value.length}/200字`
+    })
+
+    //2.打开先调用本地存储
+    // localStorage.setItem(`comment`, JSON.stringify(out))
+    const arr = JSON.parse(localStorage.getItem(`comment of zu-zi's bilibili`)) || []
+    const currentuser = JSON.parse(localStorage.getItem(`current user of zu-zi'bilibili`)) || { username: `游客123` }
+    //3.渲染函数并在网页打开时调用
+    function render() {
+      list.innerHTML = ``
+      for (let i = 0; i < arr.length; i++) {
+        const li = document.createElement(`li`)
+        if (arr[i].tx) {
+          li.innerHTML =
+            `
+  <div class="head">
+        <i style="background-image: url(images/tx${arr[i].tx}.avif);"></i>
+        <span class="uname">${arr[i].username}</span>
+      </div>
+      <div class="body">
+        <p class="remark">${arr[i].remark}</p>
+        <span class="time">${arr[i].time}</span>
+         <a href="javascript:" data-id="${i}">删除</a>
+      </div>
+  `}
+        else {
+          li.innerHTML =
+            `
+  <div class="head">
+        <i></i>
+        <span class="uname">${arr[i].username}</span>
+      </div>
+      <div class="body">
+        <p class="remark">${arr[i].remark}</p>
+        <span class="time">${arr[i].time}</span>
+         <a href="javascript:" data-id="${i}">删除</a>
+      </div>
+  `
+        }
+        list.appendChild(li)
+      }
+    }
+    render()
+
+    //4.发布模块
+    text.addEventListener(`keyup`, function (e) {
+      if (e.key === `Enter`) {
+        common()
+      }
+    })
+
+    btn.addEventListener(`click`, function () {
+      common()
+    })
+    const arrcolor = [
+      `rgba(255, 255, 255, 0.7)`,
+      `rgba(232, 79, 79, 0.7)`,
+      `rgba(246, 243, 85, 0.7)`,
+      `rgba(180, 119, 226, 0.7)`,
+      `rgba(104, 177, 241, 0.7)`
+    ]
+    const danmuarea = document.querySelector(`.danmuarea`)
+    function common() {
+      // prompt(`确认发布吗？`)
+      if (text.value.trim()) {
+        arr.unshift(
+          {
+            username: currentuser.username,
+            remark: text.value,
+            time: new Date().toLocaleString()
+          }
+        )
+        render()
+        localStorage.setItem(`comment of zu-zi's bilibili`, JSON.stringify(arr))
+        text.value = ``
+        num.innerHTML = `0/200字`
+        //添加弹幕
+        const div2 = document.createElement(`div`)
+        div2.innerHTML = arr[0].remark
+        div2.style.marginTop = Math.random() * 270 + `px`
+        div2.style.color = arrcolor[Math.floor(Math.random() * arrcolor.length)]
+        danmuarea.appendChild(div2)
+      }
+      else {
+        alert(`请正确输入内容！！`)
+        text.value = ``
+        num.innerHTML = `0/200字`
+      }
+
+    }
+
+    //5.删除模块
+    list.addEventListener(`click`, function (e) {
+      if (e.target.tagName === `A`) {
+        if (confirm(`确定删除该评论吗？`)) {
+          e.preventDefault()
+          arr.splice(e.target.dataset.id, 1)
+          render()
+          localStorage.setItem(`comment of zu-zi's bilibili`, JSON.stringify(arr))
+        }
+      }
+    })
+
+    //右侧栏推荐
+    const recommendlist = document.querySelector(`.recommend .recommendlist`)
+    for (let i = 0; i < arrrecommend.length; i++) {
+      const div = document.createElement(`div`)
+      div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/${i + 37}.avif" alt="">
+    <i>${arrrecommend[i].time}</i>
+</p>
+  <a href="#">
+            <p>${arrrecommend[i].p}</p>
+            <em>${arrrecommend[i].em}</em>
+              <i>播放:${arrrecommend[i].num}</i>
+    <span>评论:${arrrecommend[i].comment}</span>
+          </a>
+      `
+      recommendlist.appendChild(div)
+    }
+
+    //小窗模式
+    const black = document.querySelector(`.black`)
+    const video = document.querySelector(`video`)
+    const line2 = document.querySelector(`.line2`)
+    window.addEventListener(`scroll`, function () {
+      const n = document.documentElement.scrollTop
+      if (n >= 700) {
+        black.classList.add(`blacksmall`)
+        video.classList.add(`videosmall`)
+      }
+      else {
+        black.classList.remove(`blacksmall`)
+        video.classList.remove(`videosmall`)
+      }
+    })
+
+
+    //倍速
+    const speed = document.querySelector(`.speed`)
+    const speedlistul = document.querySelector(`.speedlist ul`)
+    // const speedlist = document.querySelector(`.speedlist`)
+
+    video.addEventListener(`mouseenter`, function () {
+      speed.style.opacity = 1
+    })
+    speed.addEventListener(`mouseenter`, function () {
+      speed.style.opacity = 1
+      // speedlistul.style.display = `block`
+      // video.controls.style.visibility = `visible`
+    })
+    video.addEventListener(`mouseleave`, function () {
+      speed.style.opacity = 0
+    })
+    speed.addEventListener(`click`, function () {
+      speedlistul.style.display = `block`
+    })
+    speedlistul.addEventListener(`mouseleave`, function () {
+      speedlistul.style.display = `none`
+    })
+    const speedlistlis = document.querySelectorAll(`.speedlist ul li`)
+    // speedlistul.addEventListener(`click`, function (e) {
+    //   if (e.target.tagName === `LI`) {
+    //   switch (e.target.dataset.id) {
+    //     case 0: video.playbackRate = 2
+    //       break;
+    //     case 1: video.playbackRate = 1.5
+    //       break;
+    //     case 2: video.playbackRate = 1.25
+    //       break;
+    //     case 3: video.playbackRate = 1
+    //       break;
+    //     case 4: video.playbackRate = 0.5
+    //       break;
+    //   }
+    //   }
+    // })
+    for (let i = 0; i < speedlistlis.length; i++) {
+      speedlistlis[i].addEventListener(`click`, function () {
+        video.playbackRate = this.dataset.id
+      })
+    }
+
+    //弹幕
+    //1.颜色，位置，时间都随机
+    //这个代码改到上面去了
+    for (let i = 0; i < arr.length; i++) {
+      const div = document.createElement(`div`)
+      div.innerHTML = arr[i].remark
+      div.style.marginTop = Math.random() * 270 + `px`
+      div.style.color = arrcolor[Math.floor(Math.random() * arrcolor.length)]
+      div.style.animationDelay = Math.random() * 6 + `s`
+      danmuarea.appendChild(div)
+    }
+
+    //如下写好像作用域有问题？
+    // setInterval(function () {
+    //   if () {
+    //   }
+    // }, 1000 * Math.random() * video.duration) 
+
+    //2.暂停时，弹幕动画也相应暂停
+    //.box{ animation-play-state: paused; }
+    const danmuareadivs = document.querySelectorAll(`.danmuarea div`)
+    for (let i = 0; i < danmuareadivs.length; i++) {
+      video.addEventListener(`pause`, function () {
+        danmuareadivs[i].classList.add(`pause`)
+      })
+      video.addEventListener(`play`, function () {
+        danmuareadivs[i].classList.remove(`pause`)
+      })
+    }
+
+    //3.勾选单选框对弹幕有无进行控制
+    const form = document.querySelector(`.line1 i form`)
+    let m = 0
+    form.addEventListener(`change`, function () {
+      m++
+      if (m % 2 === 1) {
+        danmuarea.style.opacity = 0
+      }
+      else {
+        danmuarea.style.opacity = 1
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bilibili</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-decoration: none;
+    }
+
+
+    /*头部导航*/
+    .header {
+      height: 160px;
+      width: 100%;
+      min-width: 1600px;
+      /* margin: auto; */
+      border-radius: 5px 5px 0 0;
+      background: url(images/6.jpg) center;
+      /* background-size: contain; */
+      /* font-family: serif; */
+      /* font-weight: 700; */
+      /* overflow: hidden; */
+    }
+
+    .header .nav {
+      width: 100%;
+      min-width: 1600px;
+      /* position: fixed; */
+      height: 50px;
+      padding-top: 10px;
+      padding-left: 10px;
+      z-index: 1;
+    }
+
+    ul {
+      float: left;
+      /* padding-top: 3px; */
+    }
+
+    .header .nav li {
+      float: left;
+    }
+
+    .header .nav li>a {
+      display: block;
+      height: 60px;
+      padding: 10px 15px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .header .nav li a:hover {
+      color: #4ecded;
+    }
+
+    .search {
+      float: left;
+      position: relative;
+      height: 50px;
+      margin-left: 60px;
+    }
+
+    .search .text {
+      float: left;
+      /* position: absolute; */
+      height: 40px;
+      width: 440px;
+      padding-left: 20px;
+      border: 0;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, .75);
+    }
+
+    .search .button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height: 30px;
+      width: 50px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      background-color: rgb(54, 174, 207);
+    }
+
+    .search .droplist {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 460px;
+      height: 340px;
+      border-radius: 0 0 10px 10px;
+      background-color: #fff;
+      z-index: 2;
+      display: none;
+      /* opacity: 0;
+      transition: all .5s; */
+    }
+
+    .search .droplist .history {
+      height: 70px;
+      margin: 15px 0 0 15px;
+    }
+
+    .search .droplist .history span {
+      position: absolute;
+      top: 50px;
+      left: 15px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 5px;
+      background-color: #f3f2f2;
+      font-size: small;
+    }
+
+    .search .droplist>span {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+      color: #bbbaba;
+      font-size: small;
+      cursor: pointer;
+    }
+
+    .search .droplist .hot {
+      margin-left: 15px;
+    }
+
+    .search .droplist .hot .hotlist a {
+      float: left;
+      width: 222px;
+      height: 45px;
+      line-height: 45px;
+      font-size: small;
+      color: #000;
+    }
+
+    .search .droplist .hot .hotlist a:hover {
+      background-color: #eae9e9;
+    }
+
+    .nav .user {
+      float: left;
+      /* position: absolute; */
+      margin: -2px 20px 0 60px;
+      height: 40px;
+      width: 40px;
+      border: 2px solid #fff;
+      border-radius: 22px;
+      background: url(images/wdtx.avif);
+      background-size: contain;
+    }
+
+    .nav .button2 {
+      float: right;
+      margin-right: 15px;
+      height: 40px;
+      width: 90px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #ef94dc;
+    }
+
+    .nav .button2:hover {
+      background-color: #fbb2ec;
+    }
+
+    .nav ul li .tab {
+      position: absolute;
+      top: 60px;
+      right: -120px;
+      height: 540px;
+      width: 360px;
+      border-radius: 10px;
+      background-color: #fff;
+      z-index: 100;
+      box-shadow: 1px 1px 3px #c3bdbd;
+      display: none;
+      transition: all .5s;
+    }
+
+
+    .header .nav ul li .tab .line {
+      height: 50px;
+      border-bottom: #bbbaba 1px solid;
+    }
+
+    .header .nav ul li .tab .line li {
+      width: 120px;
+      line-height: 50px;
+      text-align: center;
+      font-size: small;
+    }
+
+    .header .nav ul li .tab .line li:hover {
+      border-bottom: #4ecded 2px solid;
+      color: #4ecded;
+    }
+
+    .header .nav ul li .tab .line .active {
+      border-bottom: #4ecded 2px solid;
+      color: #4ecded;
+    }
+
+    .history1,
+    .history2,
+    .history3 {
+      display: none;
+    }
+
+    .nav .tab .light {
+      display: block;
+    }
+
+    .header .nav ul li .tab .history1 span {
+      display: block;
+      padding-left: 10px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .header .nav ul li .tab .historylist div {
+      position: relative;
+      height: 80px;
+      width: 350px;
+      margin: 10px 0 0 10px;
+
+    }
+
+    .historylist .playvideo {
+      float: left;
+      width: 140px;
+    }
+
+    .history1 .historylist .playvideo i {
+      position: absolute;
+      bottom: 3px;
+      left: 60px;
+      padding: 0 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+      font-style: normal;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .history2 .historylist .playvideo i {
+      position: absolute;
+      top: 5px;
+      left: 93px;
+      padding: 0 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+      font-style: normal;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .nav .tab .show {
+      margin: 20px auto;
+      height: 35px;
+      width: 300px;
+      border-radius: 8px;
+      line-height: 35px;
+      text-align: center;
+      font-size: small;
+      color: #7b7676;
+      background-color: #eeecec;
+      cursor: pointer;
+    }
+
+    .historylist div img {
+      height: 80px;
+      width: 140px;
+      border-radius: 10px;
+    }
+
+    .historylist div a {
+      float: right;
+      margin-right: 18px;
+      height: 80px;
+      width: 180px;
+    }
+
+    .historylist div a p {
+      height: 37px;
+      font-size: small;
+      color: #000;
+    }
+
+    .historylist div a p:hover {
+      color: #4ecded;
+    }
+
+    .historylist div a strong {
+      font-weight: normal;
+      color: #a49b9b;
+      font-size: 11px;
+    }
+
+    .historylist div a em {
+      display: block;
+      padding: 1px 0;
+      font-style: normal;
+      font-size: 11px;
+      color: #a49b9b;
+    }
+
+    /*页面主体部分*/
+    .w {
+      width: 1350px;
+      margin: auto;
+    }
+
+    .box1 {
+      position: relative;
+      height: 75px;
+      /* background-color: pink; */
+      margin: 20px auto;
+    }
+
+    .box1 .i1,
+    .box1 .i2 {
+      float: left;
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .box1 .i1 {
+      background: url(images/box1.1.avif);
+      background-size: contain;
+    }
+
+    .box1 .i1 span {
+      position: absolute;
+      bottom: 0;
+      left: 8px;
+      font-size: 14px;
+    }
+
+    .box1 .i2 {
+      margin-left: 30px;
+      background: url(images/1.jpg);
+      background-size: contain;
+    }
+
+    .box1 .i2 span {
+      position: absolute;
+      bottom: 0;
+      left: 90px;
+      font-size: 14px;
+    }
+
+    .box1 .nav {
+      float: left;
+      width: 969px;
+      height: 40px;
+      margin-left: 40px;
+    }
+
+
+    .box1 ul li {
+      float: left;
+    }
+
+    .box1 .nav ul a {
+      display: block;
+      height: 27px;
+      width: 85px;
+      margin: 6px 10px;
+      border-radius: 5px;
+      line-height: 27px;
+      text-align: center;
+      color: #494545;
+      background-color: #eae9e9;
+      font-size: small;
+    }
+
+    .box1 .nav ul a:hover {
+      background-color: #dcd7d7;
+    }
+
+    .box1 .nav2 {
+      float: left;
+      height: 75px;
+      width: 210px;
+      border-left: 1px solid #cccbcb;
+    }
+
+    .box1 .nav2 ul a {
+      display: block;
+      height: 25px;
+      padding: 8px 14px;
+      color: #7b7676;
+      font-size: 15px;
+    }
+
+    .box1 .nav2 ul a:hover {
+      color: #4ecded;
+    }
+
+    /*box2*/
+    .box2 {
+      position: relative;
+      height: 460px;
+      /* background-color: pink; */
+    }
+
+    .box2 .photo {
+      float: left;
+      position: relative;
+      height: 380px;
+      width: 520px;
+      background-color: #fff;
+    }
+
+    .box2 .photo img {
+      height: 380px;
+      width: 520px;
+      border-radius: 10px;
+    }
+
+    .box2 .photo div {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 100px;
+      width: 520px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .box2 .photo .title {
+      position: absolute;
+      bottom: 50px;
+      left: 20px;
+      color: #fff;
+      font-size: large;
+    }
+
+    .box2 .photo .title:hover {
+      color: #4ecded;
+    }
+
+    .box2 .photo i {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      bottom: 50px;
+      border-radius: 7px;
+      font-size: large;
+      line-height: 20px;
+      text-align: center;
+      font-style: normal;
+      color: #fff;
+      background-color: rgba(255, 255, 255, .3);
+      cursor: pointer;
+    }
+
+    .box2 .photo i:hover {
+      color: #4ecded;
+    }
+
+    .box2 .photo .i1 {
+      right: 70px;
+    }
+
+    .box2 .photo .i2 {
+      right: 30px;
+    }
+
+    .box2 .photo ul {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      /* height: 40px;
+      width: 300px; */
+    }
+
+    .box2 .photo li {
+      float: left;
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, .5);
+      cursor: pointer;
+    }
+
+    .box2 .photo li:hover {
+      background: #fff;
+    }
+
+
+    .box2 .photo .active {
+      background: #fff;
+    }
+
+    .box2 .tab {
+      float: left;
+      /* margin-left: 10px; */
+      width: 820px;
+      height: 430px;
+      background-color: #fff;
+    }
+
+    .box2 .tab div {
+      float: left;
+      position: relative;
+      height: 230px;
+      width: 250px;
+      margin: 0 10px;
+      /* border-radius: 10px; */
+      /* background-color: aqua; */
+    }
+
+    /* .box2 .tab div video {
+      position: absolute;
+      top: -27px;
+      height: 180px;
+      width: 222px;
+
+    } */
+    .box2 .tab img {
+      height: 150px;
+      width: 250px;
+      border-radius: 10px;
+    }
+
+    /* .box2 .tab img div {
+      height: 80px;
+      width: 222px;
+    } */
+
+    .box2 .tab div a {
+      display: block;
+      height: 80px;
+      width: 230px;
+      margin-top: 5px;
+      color: #000;
+      font-size: 13.1px;
+    }
+
+    .box2 .tab div a p {
+      height: 40px;
+    }
+
+    .box2 .tab div a p:hover {
+      color: #4ecded;
+    }
+
+    .box2 .tab div a span {
+      /* position: absolute; */
+      float: left;
+      margin-right: 10px;
+      height: 16px;
+      /* width: 50px; */
+      padding: 0 3px;
+      border-radius: 4px;
+      color: #f3912f;
+      text-align: center;
+      background-color: #fee5cd;
+      font-size: 12px;
+    }
+
+    .box2 .tab div a em {
+      /* position: absolute; */
+      float: left;
+      margin-right: 10px;
+      font-style: normal;
+      font-size: 12px;
+      color: #a49b9b;
+    }
+
+    .box2 .tab div a strong {
+      float: left;
+      font-weight: normal;
+      font-size: 12px;
+      color: #a49b9b;
+    }
+
+    /*box3*/
+    .box3 {
+      position: relative;
+      margin-top: 50px;
+      height: 300px;
+      /* background-color: pink; */
+    }
+
+    .box3 div {
+      float: left;
+      position: relative;
+      height: 270px;
+      width: 250px;
+      margin: 0 10px;
+      /* background: #000; */
+    }
+
+    .box3 div img {
+      height: 150px;
+      width: 250px;
+      border-radius: 10px;
+    }
+
+    .box3 div a {
+      display: block;
+      height: 80px;
+      width: 230px;
+      margin-top: 5px;
+      color: #000;
+      font-size: 13.1px;
+    }
+
+    .box3 div a p {
+      height: 40px;
+    }
+
+    .box3 div a span {
+      /* position: absolute; */
+      float: left;
+      margin-right: 5px;
+      height: 16px;
+      /* width: 50px; */
+      padding: 0 3px;
+      border-radius: 4px;
+      color: #f3912f;
+      text-align: center;
+      background-color: #fee5cd;
+      font-size: 12px;
+    }
+
+    .box3 div a em {
+      /* position: absolute; */
+      float: left;
+      margin-right: 10px;
+      font-style: normal;
+      font-size: 12px;
+      color: #a49b9b;
+    }
+
+    .box3 div a strong {
+      float: left;
+      font-weight: normal;
+      font-size: 12px;
+      color: #a49b9b;
+    }
+
+    .box2 div .line,
+    .box3 div .line {
+      position: absolute;
+      top: 130px;
+      left: 0;
+      width: 250px;
+      height: 20px;
+      border-radius: 0 0 10px 10px;
+      background-color: rgba(0, 0, 0, .3);
+    }
+
+    .box2 div .line i,
+    .box3 div .line i {
+      left: 10px;
+    }
+
+    .box2 div .line i,
+    .box3 div .line i,
+    .box3 div .line span,
+    .box2 div .line span,
+    .box2 div .line em,
+    .box3 div .line em {
+      position: absolute;
+      bottom: 0;
+      line-height: 20px;
+      font-style: normal;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .box2 div .line span,
+    .box3 div .line span {
+      left: 90px;
+    }
+
+    .box2 div .line em,
+    .box3 div .line em {
+      right: 4px;
+    }
+
+    /*视频播放*/
+
+    video {
+      /* visibility: hidden; */
+      height: 150px;
+      width: 250px;
+      border-radius: 10px;
+    }
+
+    /*头部导航栏下滑时固定*/
+    .header .fixed {
+      position: fixed;
+      border-bottom: 1px solid #706b6b;
+      /* color: #333 !important; */
+      background-color: #fff;
+      z-index: 2;
+    }
+
+    /*电梯导航*/
+    .ele {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      display: none;
+    }
+
+    .ele span {
+      display: block;
+      height: 40px;
+      width: 40px;
+      margin-top: 10px;
+      border: 1px solid #d2cece;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, .5);
+      line-height: 40px;
+      text-align: center;
+      font-size: small;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="nav">
+      <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">番剧</a></li>
+        <li><a href="#">直播</a></li>
+        <li><a href="#">游戏中心</a></li>
+        <li><a href="#">会员购</a></li>
+        <li><a href="#">漫画</a></li>
+        <li><a href="#">赛事</a></li>
+        <li><a href="#">下载客户端</a></li>
+      </ul>
+      <div class="search">
+        <input type="text" name="" class="text" placeholder="vue">
+        <input type="button" class="button" value="搜索">
+        <div class="droplist">
+          <div class="history">搜索历史<span>羊羊羊PD</span></div>
+          <span>清空</span>
+          <div class="hot">bilibili热搜
+            <div class="hotlist">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <i class="user"></i>
+      <ul>
+        <li id="li"><a href="#">大会员</a></li>
+        <li id="li"><a href="#">消息</a></li>
+        <li id="li"><a href="#">动态</a></li>
+        <li id="li"><a href="#">收藏</a></li>
+        <li style="position: relative;"><a href=" #" class="historydroplist">历史</a>
+          <div class="tab">
+            <div class="line">
+              <ul>
+                <li class="active">视频</li>
+                <li>直播</li>
+                <li>专栏</li>
+              </ul>
+            </div>
+            <div class="history1 light" id="history">
+              <span>今天</span>
+              <div class="historylist">
+
+              </div>
+            </div>
+            <div class="history2" id="history">
+              <div class="historylist">
+
+              </div>
+              <div class="show">查看更多</div>
+            </div>
+            <div class="history3" id="history">
+              <div class="historylist">
+
+              </div>
+              <div class="show">查看更多</div>
+            </div>
+          </div>
+        </li>
+        <li id="li"><a href="#">创作中心</a></li>
+      </ul>
+      <input type="button" value="投稿" class="button2">
+    </div>
+  </div>
+  <div class="main">
+    <div class="box1 w">
+      <i class="i1"><span>动态</span></i>
+      <i class="i2"><span>热门</span></i>
+      <div class="nav">
+        <ul>
+          <li><a href="#">番剧</a></li>
+          <li><a href="#">国创</a></li>
+          <li><a href="#">综艺</a></li>
+          <li><a href="#">动画</a></li>
+          <li><a href="#">鬼畜</a></li>
+          <li><a href="#">舞蹈</a></li>
+          <li><a href="#">娱乐</a></li>
+          <li><a href="#">科技</a></li>
+          <li><a href="#">美食</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">电影</a></li>
+          <li><a href="#">电视剧</a></li>
+          <li><a href="#">纪录片</a></li>
+          <li><a href="#">游戏</a></li>
+          <li><a href="#">音乐</a></li>
+          <li><a href="#">影视</a></li>
+          <li><a href="#">知识</a></li>
+          <li><a href="#">资讯</a></li>
+          <li><a href="#">更多</a></li>
+        </ul>
+      </div>
+      <div class="nav2">
+        <ul>
+          <li><a href="#">专栏</a></li>
+          <li><a href="#">活动</a></li>
+          <li><a href="#">社区中心</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">直播</a></li>
+          <li><a href="#">课堂</a></li>
+          <li><a href="#">热歌热榜</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="box2 w">
+      <div class="photo"><img src="images/lbt1.avif">
+        <div></div>
+        <p class="title">手撕天灾!超燃格斗再次上线</p>
+        <i class="i1">
+          < </i>
+            <i class="i2"> > </i>
+            <ul>
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+      </div>
+      <div class="tab">
+      </div>
+    </div>
+    <div class="box3 w">
+    </div>
+    <div class="ele">
+      <span>...</span>
+      <span>顶部</span>
+    </div>
+    <div class="footer">
+    </div>
+    <script src="list.js"></script>
+    <script>
+
+      //box2部分
+      const tab = document.querySelector(`.box2 .tab`)
+      for (let i = 0; i < array1.length; i++) {
+        const div = document.createElement(`div`)
+        if (array1[i].span) {
+          div.innerHTML = `
+  <p class="playvideo">
+  <img src="images/${i + 1}.avif" alt="">
+  <i class="line">
+    <i>播放:${array1[i].num}</i>
+    <span>评论:${array1[i].comment}</span>
+    <em>${array1[i].time}</em>
+    </i>
+</p>
+  <a href="#">
+            <p>${array1[i].p}</p>
+            <span>${array1[i].span}</span>
+            <em>${array1[i].em}</em>
+            <strong>${array1[i].strong}</strong>
+          </a>
+    `}
+        else {
+          div.innerHTML = `
+  <p class="playvideo"><img src="images/${i + 1}.avif" alt="">
+  <i class="line">
+     <i>播放:${array1[i].num}</i>
+    <span>评论:${array1[i].comment}</span>
+    <em>${array1[i].time}</em>
+    </i></p>
+  <a href="#">
+            <p>${array1[i].p}</p>
+            <em>${array1[i].em}</em>
+            <strong>${array1[i].strong}</strong>
+          </a>
+    `}
+        tab.appendChild(div)
+      }
+      //box3部分
+      const box3 = document.querySelector(`.box3`)
+      for (let i = 0; i < array2.length; i++) {
+        const div = document.createElement(`div`)
+        if (array2[i].span) {
+          div.innerHTML = `
+ 
+  <p><img src="images/${i + 7}.avif" alt="">
+  <i class="line">
+     <i>播放:${array2[i].num}</i>
+    <span>评论:${array2[i].comment}</span>
+    <em>${array2[i].time}</em>
+    </i></p>
+  <a href="#">
+            <p>${array2[i].p}</p>
+            <span>${array2[i].span}</span>
+            <em>${array2[i].em}</em>
+            <strong>${array2[i].strong}</strong>
+          </a>
+    `}
+        else {
+          div.innerHTML = `
+ <p><img src="images/${i + 7}.avif" alt="">
+  <i class="line">
+     <i>播放:${array2[i].num}</i>
+    <span>评论:${array2[i].comment}</span>
+    <em>${array2[i].time}</em>
+    </i></p>
+  <a href="#">
+            <p>${array2[i].p}</p>
+            <em>${array2[i].em}</em>
+            <strong>${array2[i].strong}</strong>
+          </a>
+    `
+        }
+        if (i % 5 === 0) { div.style.marginLeft = `-10px` }
+        box3.appendChild(div)
+      }
+
+      //头部导航栏划走时固定在上方+电梯导航
+      const headernav = document.querySelector(`.header .nav`)
+      const headeras = document.querySelectorAll(`.header .nav li a`)
+      const headertext = document.querySelector(`.search .text`)
+      const ele = document.querySelector(`.ele`)
+      const elespan2 = document.querySelector(`.ele span:nth-child(2)`)
+      window.addEventListener(`scroll`, function () {
+        const n = document.documentElement.scrollTop
+        if (n >= 200) {
+          headernav.classList.add(`fixed`)
+          ele.style.display = `block`
+          for (let i = 0; i < headeras.length; i++) {
+            headeras[i].style.color = `#000`
+            // headertext.style.border = `1px solid #000`
+          }
+          headertext.style.backgroundColor = `#ebe9e9`
+        }
+        else {
+          headernav.classList.remove(`fixed`)
+          ele.style.display = `none`
+          for (let i = 0; i < headeras.length; i++) {
+            headeras[i].style.color = `#fff`
+            // headertext.style.border = 0
+          }
+          headertext.style.backgroundColor = `rgba(255, 255, 255, .75)`
+        }
+        for (let i = 0; i < headeras.length; i++) {
+          headeras[i].addEventListener(`mouseenter`, function () {
+            this.style.color = `#4ecded`
+          })
+          headeras[i].addEventListener(`mouseleave`, function () {
+            this.style.color = n >= 200 ? `#000` : `#fff`
+          })
+        }
+      })
+
+      elespan2.addEventListener(`click`, function () {
+        document.documentElement.scrollTop = 0
+      })
+      //轮播图
+      const box2img = document.querySelector(`.box2 .photo img`)
+      const box2lis = document.querySelectorAll(`.box2 .photo ul li`)
+      const box2photo = document.querySelector(`.box2 .photo`)
+      let j = 1
+      let timeid = setInterval(function () { next.click() }, 2000)
+      const next = document.querySelector(`.box2 .photo .i2`)
+      const prev = document.querySelector(`.box2 .photo .i1`)
+      const box2title = document.querySelector(`.box2 .photo .title`)
+      prev.addEventListener(`click`, function () {
+        j--
+        if (j === 0) { j = 9 }
+        common()
+      })
+      next.addEventListener(`click`, function () {
+        j++
+        if (j === 10) { j = 1 }
+        common()
+      })
+      function common() {
+        box2img.src = `images/lbt${j}.avif`
+        box2title.innerHTML = arrphoto[j - 1].title
+        document.querySelector(`.box2 .active`).classList.remove(`active`)
+        box2lis[j - 1].classList.add(`active`)
+      }
+      box2photo.addEventListener(`mouseenter`, function () {
+        clearInterval(timeid)
+      })
+      box2photo.addEventListener(`mouseleave`, function () {
+        timeid = setInterval(function () { next.click() }, 2000)
+      })
+
+      //搜索的下拉栏
+      const hotlist = document.querySelector(`.droplist .hot .hotlist`)
+      const headerdroplist = document.querySelector(`.header .search .droplist`)
+      headertext.addEventListener(`focus`, function () {
+        headerdroplist.style.display = `block`
+      })
+      headertext.addEventListener(`blur`, function () {
+        headerdroplist.style.display = `none`
+      })
+      for (let i = 0; i < arrhot.length; i++) {
+        const a = document.createElement(`a`)
+        a.href = `#`
+        a.innerHTML = `
+        ${arrhot[i]}
+        `
+        hotlist.appendChild(a)
+      }
+
+      //历史记录的显示更多
+      const historylist = document.querySelector(`.header .nav ul li .tab .history1 .historylist`)
+      for (let i = 0; i < arrhistory.length; i++) {
+        const div = document.createElement(`div`)
+        div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/history${i + 1}.avif" alt="">
+    <i>${arrhistory[i].time}</i>
+</p>
+  <a href="#">
+            <p>${arrhistory[i].p}</p>
+            <strong>${arrhistory[i].strong}</strong>
+            <em>${arrhistory[i].em}</em>
+          </a>
+      `
+        historylist.appendChild(div)
+      }
+
+      const historylist2 = document.querySelector(`.header .nav ul li .tab .history2 .historylist`)
+      for (let i = 0; i < arrhistoryzb.length; i++) {
+        const div = document.createElement(`div`)
+        div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/history${i + 6}.avif" alt="">
+    <i>${arrhistoryzb[i].time}</i>
+</p>
+  <a href="#">
+            <p>${arrhistoryzb[i].p}</p>
+            <strong>${arrhistoryzb[i].strong}</strong>
+            <em>${arrhistoryzb[i].em}</em>
+          </a>
+      `
+        historylist2.appendChild(div)
+      }
+
+      const historylist3 = document.querySelector(`.header .nav ul li .tab .history3 .historylist`)
+      for (let i = 0; i < arrhistoryzl.length; i++) {
+        const div = document.createElement(`div`)
+        div.innerHTML = `
+       <p class="playvideo">
+  <img src="images/history${i + 9}.avif" alt="">
+</p>
+  <a href="#">
+            <p>${arrhistoryzl[i].p}</p>
+            <strong>${arrhistoryzl[i].strong}</strong>
+            <em>${arrhistoryzl[i].em}</em>
+          </a>
+      `
+        historylist3.appendChild(div)
+      }
+
+      const historydroplist = document.querySelector(`.historydroplist`)
+      // const historydroplistwhole = document.querySelector(`#historydroplist`)
+      const historytab = document.querySelector(`.nav .tab`)
+      const linelis = document.querySelectorAll(`.nav .tab .line li`)
+      const historydivs = document.querySelectorAll(`.nav .tab #history`)
+      const navlis = document.querySelectorAll(`.nav #li`)
+      historydroplist.addEventListener(`mouseenter`, function () {
+        historytab.style.display = `block`
+      })
+
+      historytab.addEventListener(`mouseleave`, function () {
+        historytab.style.display = `none`
+      })
+      for (let i = 0; i < navlis.length; i++) {
+        navlis[i].addEventListener(`mouseenter`, function () {
+          historytab.style.display = `none`
+        })
+      }
+      for (let i = 0; i < linelis.length; i++) {
+        linelis[i].addEventListener(`click`, function () {
+          document.querySelector(`.nav .tab .light`).classList.remove(`light`)
+          historydivs[i].classList.add(`light`)
+          document.querySelector(`.nav .tab .line .active`).classList.remove(`active`)
+          linelis[i].classList.add(`active`)
+        })
+      }
+
+      //鼠标经过封面时播放视频
+      // const box2imgs = document.querySelectorAll(`.box2 .tab div img`)
+      // const box2ps = document.querySelectorAll(`.box2 .tab div .playvideo`)
+      // const box2videos = document.querySelectorAll(`.box2 .tab div video`)
+      // for (let i = 0; i < box2ps.length; i++) {
+      //   box2ps[i].addEventListener(`mouseenter`, function () {
+      //     box2ps[i].innerHTML = `<video src="4.mp4" muted="true" loop autoplay> </video>`
+      //   })
+      //   box2ps[i].addEventListener(`mouseleave`, function () {
+      //     box2ps[i].innerHTML = `
+      //       <img src="images/${i + 1}.avif" alt="">
+      //     <i class="line">
+      //       <i>播放:${array1[i].num}</i>
+      //       <span>评论:${array1[i].comment}</span>
+      //       <em>${array1[i].time}</em>
+      //       </i>
+      //       `
+      //   }
+      //   )
+      // }
+      //跳转
+      const boxdivs = document.querySelectorAll(`.box2 .tab div,.box3 div`)
+      for (let i = 0; i < boxdivs.length; i++) {
+        boxdivs[i].addEventListener(`click`, function () {
+          location.href = `详情页.html`
+        })
+      }
+    </script>
+</body>
+
+</html>
